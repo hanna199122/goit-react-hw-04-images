@@ -17,7 +17,7 @@ const App = () => {
   const [page, setpage] = useState(1);
   const [pictures, setpictures] = useState([]);
   const [isLoading, setisLoading] = useState(false);
-  const [error, seterror] = useState(null);
+  const [errors, seterror] = useState(null);
   const [largeImageURL, setlargeImageURL] = useState('');
 
   useEffect(() => {
@@ -35,7 +35,7 @@ const App = () => {
           setpictures([...pictures, ...picture.hits]);
         }
       })
-      .catch(error => seterror(error.message))
+      .catch(error => seterror(errors))
       .finally(() => setisLoading(false));
   }, [page, picturesName]);
 
